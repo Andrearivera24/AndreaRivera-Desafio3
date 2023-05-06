@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto</title>
+</head>
+<body>
+
+    <center>
+        <h1>AGREGAR UN NUEVO PRODUCTO</h1>
+
+        <form method="post" action="/api/products" enctype="multipart/form-data">
+            <input type="text" required id="title" name="title" placeholder="Nombre del producto" />
+            <input type="text" required id="description" name=" description" placeholder="Descripción" />
+            <input type="text" required id="price" name="price" placeholder="Precio" />
+            <input type="text" required id="code" name="code" placeholder="Código" />
+            <input type="text" required id="stock" name="stock" placeholder="Stock disponible" />
+            <input type="text" required id="category" name="category" placeholder="Qué categoría es" />
+            <input type="text" required id="status" name="status" placeholder="True or false" />
+            <input type="file" id="img" name="thumbnail" placeholder="Foto del producto" />
+            <button type="submit">Enviar</button>
+        </form>
+    </center>
+    
+
+</body>
+</html>

@@ -1,8 +1,8 @@
-//------------------------------------------------------------------------------ DESAFÍO 3 ----------------------------------------------------------------------------------
+//---------------------------------------------IMPORTANTE, CAMBIAR TODO A CART.----------------------------------------------------------------------------------
 // trabajando con módulos. 
 import fs from "fs"
 
-export default class ProductManager { //--> la clase debe exportarse para poder importarla desde el servidor. 
+export default class CartManager { //--> la clase debe exportarse para poder importarla desde el servidor. 
   #id = 0; // id oomo variable privada.
   constructor(path) {
     //--> La ruta como parámetro, para luego al instanciar la clase, pasarle la ruta real.
@@ -13,9 +13,9 @@ export default class ProductManager { //--> la clase debe exportarse para poder 
     }
   }
   //--------------------------------- Debe guardar objetos con el siguiente formato ------------------------------------------------------------------
-  async addProduct(title, description, price, thumbnail, code, stock, category, status) {
+  async addProduct(title, description, price, thumbnail, code, stock) {
     try {
-      const product = { title, description, price, thumbnail, code, stock, category, status };
+      const product = { title, description, price, thumbnail, code, stock };
       product.id = this.#getID(); // asignarle un id autoincrementable
       const productosAct = await this.getProducts(); //obtengo el archivo con los productos actuales, llamando a getProducts()
       if (
@@ -23,10 +23,9 @@ export default class ProductManager { //--> la clase debe exportarse para poder 
         (product.title != undefined) &
         (product.description != undefined) &
         (product.price != undefined) &
-        //(product.thumbnail != undefined) // no es obligatorio el campo thumbnail 
+        (product.thumbnail != undefined) &
         (product.code != undefined) &
-        (product.stock != undefined) &
-        (product.category != undefined)
+        (product.stock != undefined)
       ) {
         productosAct.push(product); // Agrego el nuevo producto a la lista anterior
         //Debido a que la lista anterior se modificó, tengo que escribirla nuevamente(actualizada y en formato stringify);
@@ -132,7 +131,7 @@ export default class ProductManager { //--> la clase debe exportarse para poder 
 
 //----------------------- CREO UNA INSTRANCIA DE LA CLASE Y HAGO LAS PRUEBAS CON UNA FUNCIÓN ASÍNCRONA -------------------------
 
-const products = new ProductManager("./products.json"); // le paso a ruta.
+const products = new CartManager("./products.json"); // le paso a ruta.
 
 const pruebas = async () => {
   try {
